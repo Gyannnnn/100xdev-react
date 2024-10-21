@@ -1,35 +1,46 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+import { useEffect } from "react";
+import { useState } from "react";
+
+export default function App() {
+
+  const[counterVisible,SetcounterVisible] = useState(true);
+
+  const [count, Setcount] = useState(0);
+  function increase() {
+    Setcount(count + 1);
+  }
+  function decrease() {
+    if (count == 0) {
+      alert("You reached 0");
+    } else {
+      Setcount(count - 1);
+    }
+  }
+  function reset() {
+    Setcount(0);
+  }
+  useEffect(()=>{
+      let clock = setInterval(()=>{  // mounting
+        SetcounterVisible(c => !c)
+      },5000);
+      return function(){
+        clearInterval(clock) // unmounting 
+      }
+      
+  },[])
+
+
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div>
+      <b>Counter Website</b>
+      <h1>{count}</h1>
+      <button onClick={increase}>increase the value</button>
+      <button onClick={decrease}>Decrase The Value</button>
+      {
+        counterVisible && <button onClick={reset}>Reset the Value</button>
+      }
+    </div>
+  );
 }
-
-export default App
