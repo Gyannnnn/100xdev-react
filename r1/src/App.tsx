@@ -1,7 +1,7 @@
 
 import { useEffect } from "react";
 import { useState } from "react";
-
+import Counter from "./Counter";
 export default function App() {
 
   const[counterVisible,SetcounterVisible] = useState(true);
@@ -30,17 +30,21 @@ export default function App() {
       
   },[])
 
-
-
+const [counter, setCounter] = useState(0)
+function increaseCounter(){
+  setCounter(counter +1)
+}
   return (
     <div>
-      <b>Counter Website</b>
+      {/* <b>Counter Website</b>
       <h1>{count}</h1>
       <button onClick={increase}>increase the value</button>
       <button onClick={decrease}>Decrase The Value</button>
       {
         counterVisible && <button onClick={reset}>Reset the Value</button>
-      }
+      } */}
+      <Counter counter={counter}/>
+      <button onClick={increaseCounter}>increase the counter</button>
     </div>
   );
 }

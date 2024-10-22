@@ -1,15 +1,19 @@
+import Counter from "./Counter";
+
+
+
 export default function useffect() {
 
-
+//useEffect , dependency array , cleanups
 useffect(()=>{
-  console.log("Mount");
+  console.log("Mount"); // mounting logic 
   return function(){
-    console.log("Unmount")
+    console.log("Unmount") //unmount
   }
 },[])
 
 
   return (
-    <div>useffect</div>
+    <div><Counter/></div>
   )
 }
