@@ -8,6 +8,9 @@ console.log("Nothing changed")
 
 useEffect(()=>{
 console.log("Counter Changed");
+return function(){
+  console.log("Cleanedup")
+} 
 },[counter])
 
 
