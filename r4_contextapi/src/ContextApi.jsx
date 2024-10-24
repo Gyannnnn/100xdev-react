@@ -1,33 +1,41 @@
-import React, { useState } from "react";
+import React, { useContext, useState, createContext } from "react";
+
+const BulbContext = createContext();
 
 export default function App() {
+  const [bulbon, setBulbon] = useState(true); // Corrected capitalization for state setter
+
   return (
-    <div>
-      <LightBulb />
-    </div>
+    <BulbContext.Provider value={{ bulbon, setBulbon }}>
+      <div>
+        <LightBulb />
+      </div>
+    </BulbContext.Provider>
   );
 }
 
 function LightBulb() {
-  const[bulbOn, SetbulbOn] = useState(true)
+  const { bulbon, setBulbon } = useContext(BulbContext); // Use context directly
   return (
     <div>
-      <BulbState bulbOn={bulbOn} />
-      <ToggleBulbState bulbOn={bulbOn} SetbulbOn={SetbulbOn} />
+      <BulbState />
+      <ToggleBulbState />
     </div>
   );
 }
 
-function BulbState({bulbOn}) {
-  return <div>{
-    bulbOn?"Bulb on":"Bulb of"
-    }</div>;
-} 
+function BulbState() {
+  const { bulbon } = useContext(BulbContext);
+  return <div>{bulbon ? "Bulb on" : "Bulb off"}</div>; // Fixed typo
+}
 
-function ToggleBulbState({bulbOn,SetbulbOn}) {
-  function toggle(){
-    SetbulbOn(!bulbOn)
+function ToggleBulbState() {
+  const { bulbon, setBulbon } = useContext(BulbContext); // Use context directly
+
+  function toggle() {
+    setBulbon(!bulbon); // Corrected capitalization for state setter
   }
+
   return (
     <div>
       <button onClick={toggle}>Toggle The Bulb</button>
