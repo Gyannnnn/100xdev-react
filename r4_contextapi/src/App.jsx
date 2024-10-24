@@ -20,7 +20,7 @@ function LightBulb() {
 
 function BulbState({bulbOn}) {
   return <div>{
-    bulbOn?"Bulb on":"bulb of"
+    bulbOn?"Bulb on":"Bulb of"
     }</div>;
 } 
 
