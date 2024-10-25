@@ -3,7 +3,7 @@ import React, { useContext, useState, createContext } from "react";
 const BulbContext = createContext();
 
 export default function App() {
-  const [bulbon, setBulbon] = useState(true); // Corrected capitalization for state setter
+  const [bulbon, setBulbon] = useState(true); 
 
   return (
     <BulbContext.Provider value={{ bulbon, setBulbon }}>
@@ -15,7 +15,7 @@ export default function App() {
 }
 
 function LightBulb() {
-  const { bulbon, setBulbon } = useContext(BulbContext); // Use context directly
+  const { bulbon, setBulbon } = useContext(BulbContext); 
   return (
     <div>
       <BulbState />
@@ -26,14 +26,14 @@ function LightBulb() {
 
 function BulbState() {
   const { bulbon } = useContext(BulbContext);
-  return <div>{bulbon ? "Bulb on" : "Bulb off"}</div>; // Fixed typo
+  return <div>{bulbon ? "Bulb on" : "Bulb off"}</div>; 
 }
 
 function ToggleBulbState() {
-  const { bulbon, setBulbon } = useContext(BulbContext); // Use context directly
+  const { bulbon, setBulbon } = useContext(BulbContext); 
 
   function toggle() {
-    setBulbon(!bulbon); // Corrected capitalization for state setter
+    setBulbon(!bulbon); 
   }
 
   return (
