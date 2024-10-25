@@ -14,11 +14,22 @@ function useCounter() {
 }
 
 export default function App() {
+return <div>
+   <Counter/>
+   <Counter/>
+   <Counter/>
+</div>
+
+}
+
+// to imporve code reusability 
+
+function Counter(){
   const {count,increament } = useCounter()
   return (
     <div>
       <h1>{count}</h1>
       <button onClick={increament}>Increase The Value</button>
     </div>
-  );
+  )
 }
