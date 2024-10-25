@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { usePostTitle } from "./hooks/useFetch";
+import { useFetch, usePostTitle } from "./hooks/useFetch";
 
 export default function UseFetchHook() {
-const postTitle = usePostTitle()
+const postTitle = usePostTitle();
+const {finalData} = useFetch("https://jsonplaceholder.typicode.com/posts/1")
 
   return <div>
     {
-        postTitle
+        JSON.stringify(finalData)
     }
   </div>;
 }
