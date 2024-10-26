@@ -30,7 +30,7 @@ export function useFetch(url) {
 
     useEffect(() => {
         fetchData();
-    },)
+    },[url])
 
     return {
         finalData
