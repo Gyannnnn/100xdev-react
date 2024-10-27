@@ -16,3 +16,5 @@ export const evenSelector = selector({
     return ;
   }
 })
+
+// selector just prvents unnecessary re-renders in recoil 
