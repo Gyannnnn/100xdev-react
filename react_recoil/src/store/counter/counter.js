@@ -6,6 +6,8 @@ export const counterAtom = atom({
 })
 
 
+// process of creating selector
+
 export const evenSelector = selector({
   key:"oqujcwefh",
   get:function({get}){
